@@ -1,4 +1,4 @@
-export const SITE_URL = "https://svrdev.md";
+export const SITE_URL = "https://svrdev.fun";
 export const SITE_NAME = "SVR Dev";
 
 export const CONTACT = {
