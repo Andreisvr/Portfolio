@@ -2213,3 +2213,116 @@ html.js [data-reveal].is-in {
 @media (prefers-reduced-motion: reduce) {
   .erp-hub-core, .erp-hub-lines line { animation: none; }
 }
+
+.erp-packages {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 30px;
+  align-items: stretch;
+}
+
+.erp-package {
+  --accent: #3ee08f;
+  position: relative;
+  padding: 30px 26px;
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  box-shadow: 0 0 40px color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+.erp-package.featured {
+  background: linear-gradient(170deg, color-mix(in srgb, var(--accent) 16%, transparent), rgba(255, 255, 255, 0.03));
+  box-shadow: 0 0 60px color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+.erp-package h3 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.erp-package-who {
+  margin-top: 6px;
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 900px) {
+  .erp-packages { grid-template-columns: 1fr; }
+}
+
+/* ================= TELEFONIE ================= */
+
+.tel-card .info-card-icon {
+  background: linear-gradient(135deg, #ff9f1a, #ff5e3a);
+  color: #fff;
+}
+
+.tel-metrics {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.tel-metric {
+  padding: 22px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.tel-metric.done {
+  border-color: rgba(62, 224, 143, 0.35);
+  background: linear-gradient(160deg, rgba(62, 224, 143, 0.08), rgba(255, 255, 255, 0.02));
+}
+
+.tel-metric.on-demand {
+  border-style: dashed;
+  border-color: rgba(129, 140, 248, 0.5);
+  background: linear-gradient(160deg, rgba(129, 140, 248, 0.1), rgba(255, 255, 255, 0.02));
+}
+
+.tel-metric-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.tel-metric-icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 13px;
+  font-size: 1.2rem;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.tel-metric.done .tel-metric-icon { color: #3ee08f; }
+.tel-metric.on-demand .tel-metric-icon { color: #a5b4fc; }
+
+.tel-metric h4 {
+  margin: 14px 0 6px;
+  font-size: 1.05rem;
+}
+
+.tel-metric p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+@media (max-width: 1100px) {
+  .tel-metrics { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .tel-metrics { grid-template-columns: 1fr; }
+  .tel-metric { padding: 18px; }
+}

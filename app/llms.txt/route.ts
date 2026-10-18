@@ -32,8 +32,8 @@ ${integrations
 - FirIntins.md (https://firintins.md): magazin online de articole pentru pescuit, RO/RU, panou de administrare.
 - Kolor Expert (https://kolor.md): site pentru partenerul oficial Köber în Moldova.
 - DLT Logistic (https://www.dltlogistics.md): import și logistică China–Moldova.
-- Promauto (https://promauto.md): website parcare auto + CRM propriu (PromCRM) cu Meta, Telegram, telefonie Orange.
-- Gamma (https://www.gamma.md): CRM + ERP pentru retail (depozite, stocuri FIFO, POS, scanner, livrări, export automat pe site), telefonie Moldcell, curierat.
+- Promauto (https://promauto.md): website parcare auto, catalog, pagini de credit, SEO, Telegram.
+- Gamma (https://www.gamma.md): landing pages pentru produse, promovare, mentenanță.
 - Grabovsky.fit (https://grabovsky.fit): servicii de antrenament, Telegram și plăți.
 - PIM.MD (https://www.pim.md): magazin online, CRM, landinguri.
 - Tavanis (https://www.tavanis.online): tavane extensibile.

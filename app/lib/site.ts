@@ -29,7 +29,7 @@ export const PAGES = [
     path: "/crm-la-comanda",
     title: "CRM la comandă pentru companii",
     summary:
-      "CRM construit pe procesele companiei: Kanban, remindere, telefonie, documente automate, roluri, analiză, migrare din amoCRM/Excel.",
+      "CRM construit pe procesele companiei: Kanban, remindere, telefonie cu înregistrarea convorbirilor și metrici pentru operatori (timp în apel, refuzuri, conversie, calitate), documente automate, roluri, analiză, migrare din amoCRM/Excel.",
   },
   {
     path: "/erp-retail",

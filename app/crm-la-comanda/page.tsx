@@ -19,12 +19,13 @@ import PageBackdrop from "../components/page-backdrop";
 import Faq, { type FaqItem } from "../components/faq";
 import ContactCta from "../components/contact-cta";
 import JsonLd from "../components/json-ld";
+import TelephonySection from "../components/telephony-section";
 import { integrations } from "../data/integrations";
 import { SITE_URL, absoluteUrl } from "../lib/site";
 
 const PATH = "/crm-la-comanda";
 const description =
-  "CRM la comandă pentru companii din Moldova: Kanban, remindere, telefonie Orange/Moldcell, leaduri din Meta și site, notificări Telegram, documente automate, roluri și analiză. Fără abonament per utilizator.";
+  "CRM la comandă pentru companii din Moldova: Kanban, remindere, telefonie Orange/Moldcell cu înregistrarea convorbirilor și metrici pentru operatori, leaduri din Meta și site, notificări Telegram, documente automate, roluri și analiză. Fără abonament per utilizator.";
 
 export const metadata: Metadata = {
   title: "CRM la comandă pentru companii din Moldova",
@@ -47,7 +48,7 @@ const modules = [
   {
     icon: <FaPhoneAlt />,
     title: "Telefonie în CRM",
-    text: "Apelurile se leagă automat de client, vezi cine sună înainte să răspunzi, suni dintr-un click și ai lista de apeluri pierdute.",
+    text: "Apelurile se înregistrează și se leagă automat de client, vezi cine sună înainte să răspunzi, suni dintr-un click și urmărești timpul în apel al fiecărui operator.",
   },
   {
     icon: <FaFileSignature />,
@@ -87,26 +88,24 @@ const compare = [
 
 const cases = [
   {
-    logo: "/projects/promcrm.webp",
-    title: "PromCRM — PromAuto",
-    href: "https://promauto.md",
-    text: "CRM-ul care a înlocuit complet amoCRM pentru o companie de vânzări auto și intermediere credite. Acoperă două fluxuri pe același schelet: vânzări (un pipeline per manager) și gestiunea stocului auto.",
+    logo: "/projects/svr-crm.webp",
+    title: "CRM pentru o echipă de vânzări",
+    text: "Un CRM care a înlocuit complet un sistem cu abonament folosit ani de zile. Acoperă două fluxuri pe același schelet: vânzări (un pipeline per manager) și gestiunea stocului.",
     points: [
       "Leaduri din site și din reclamele Meta, distribuite automat",
       "Un apel nou se atașează leadului existent — fără sute de dubluri",
-      "Telefonie Orange PBX, notificări și remindere pe Telegram",
+      "Telefonie PBX, notificări și remindere pe Telegram",
       "Acte generate automat (DOCX + PDF)",
     ],
     accent: "#8bd317",
   },
   {
     logo: "/projects/svr-erp.webp",
-    title: "CRM + ERP — Gamma",
-    href: "https://www.gamma.md",
+    title: "CRM + ERP pentru retail",
     text: "Un CRM construit de la zero și un ERP separat pentru depozit, care funcționează independent și comunică prin API.",
     points: [
-      "Telefonie Moldcell: card „sună acum”, click-to-call, apeluri pierdute",
-      "Leaduri din landinguri, TikTok și magazinul online, pe canale separate",
+      "Telefonie PBX: card „sună acum”, click-to-call, apeluri pierdute",
+      "Leaduri din landinguri, rețele sociale și magazinul online, pe canale separate",
       "Verificare zilnică automată a livrărilor la curier",
       "Roluri distincte pentru manageri, depozit și administrator",
     ],
@@ -134,6 +133,14 @@ const faq: FaqItem[] = [
   {
     q: "Ce se întâmplă dacă avem nevoie de o funcție nouă peste o lună?",
     a: "O adăugăm. Un CRM la comandă crește odată cu afacerea — la proiectele existente funcțiile noi vin aproape săptămânal, la cererea echipei.",
+  },
+  {
+    q: "Pot asculta convorbirile operatorilor?",
+    a: "Da. Înregistrările se descarcă automat de la centrala telefonică și apar în fișa clientului, lângă apelul respectiv. Accesul la ele se poate limita pe roluri, de exemplu doar pentru administrator.",
+  },
+  {
+    q: "Ce metrici vedem despre operatori?",
+    a: "Timpul petrecut în apel, numărul de apeluri primite, efectuate și pierdute, rezultatul apelurilor, refuzurile cu motivele lor și conversia în comenzi. La cerere adăugăm evaluarea automată a calității convorbirilor cu AI, pe baza înregistrărilor.",
   },
   {
     q: "Unde sunt stocate datele?",
@@ -184,6 +191,8 @@ export default function CrmPage() {
           ))}
         </ul>
       </section>
+
+      <TelephonySection />
 
       <section className="page-section" aria-labelledby="cmp-title">
         <h2 id="cmp-title" className="section-title" data-reveal>
@@ -260,9 +269,6 @@ export default function CrmPage() {
                   </li>
                 ))}
               </ul>
-              <a href={c.href} target="_blank" rel="noopener noreferrer" className="project-visit">
-                {new URL(c.href).hostname.replace(/^www\./, "")} <FaArrowRight aria-hidden="true" />
-              </a>
             </article>
           ))}
         </div>

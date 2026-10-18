@@ -79,7 +79,7 @@ export const integrations: Integration[] = [
     name: "TikTok",
     hint: "pipeline și linie telefonică separate",
     details:
-      "Pentru vânzările din TikTok am construit pipeline propriu și linie telefonică dedicată, cu apelurile direcționate automat către operatorul responsabil.",
+      "Vânzările din TikTok pot avea pipeline propriu și linie telefonică dedicată, cu apelurile direcționate automat către operatorul responsabil.",
     examples: ["Pipeline separat pentru TikTok", "Linie telefonică dedicată, legată de un operator"],
     status: "done",
     icon: <FaTiktok />,
@@ -92,10 +92,11 @@ export const integrations: Integration[] = [
     details:
       "Conectăm centrala telefonică virtuală (Orange, Moldcell) la CRM: fiecare apel se leagă automat de clientul potrivit, managerul vede cine sună înainte să răspundă și sună dintr-un click.",
     examples: [
+      "Înregistrarea convorbirilor, ascultată din fișa clientului",
       "Card „sună acum” cu numele clientului și link spre lead",
       "Click-to-call din fișa clientului",
       "Listă de apeluri pierdute, ca să nu rămână niciun client fără răspuns",
-      "Timp de convorbire pe operator în rapoarte",
+      "Timp în apel, apeluri pierdute, refuzuri și conversie pe operator",
     ],
     status: "done",
     icon: <FaPhoneAlt />,
@@ -245,10 +246,15 @@ export const integrations: Integration[] = [
   {
     slug: "ai",
     name: "AI & automatizări",
-    hint: "rezumate, clasificare, răspunsuri asistate",
+    hint: "analiza convorbirilor, rezumate, clasificare",
     details:
       "Modele AI integrate în procesele existente: clasificarea cererilor, rezumatul conversațiilor, extragerea datelor din documente sau răspunsuri propuse pentru manageri.",
-    examples: ["Clasificare automată a cererilor", "Extragere date din documente"],
+    examples: [
+      "Transcrierea și evaluarea calității convorbirilor",
+      "Rezumat automat al apelului în fișa clientului",
+      "Clasificare automată a cererilor",
+      "Extragere date din documente",
+    ],
     status: "on-demand",
     icon: <FaRobot />,
     color: "#818cf8",

@@ -6,7 +6,7 @@ const points = [
   "Depozite multiple, stoc în timp real, rezervare la comandă",
   "POS pentru magazin și scanner de depozit pe telefon",
   "Preț, reducere și stoc trimise automat pe site",
-  "Conectat cu CRM-ul, curierii și șoferii proprii",
+  "Soft separat: funcționează singur sau conectat la CRM-ul și site-ul vostru",
 ];
 
 export default function ErpTeaser() {

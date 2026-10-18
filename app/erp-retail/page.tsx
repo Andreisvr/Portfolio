@@ -20,6 +20,10 @@ import {
   FaTools,
   FaMobileAlt,
   FaPlug,
+  FaCubes,
+  FaLink,
+  FaServer,
+  FaPuzzlePiece,
 } from "react-icons/fa";
 import PageHero from "../components/page-hero";
 import PageBackdrop from "../components/page-backdrop";
@@ -158,6 +162,51 @@ const compare: { label: string; ours: Mark; c1: Mark }[] = [
 const markIcon = (m: Mark) =>
   m === "yes" ? <FaCheck aria-label="Da" /> : m === "no" ? <FaTimes aria-label="Nu" /> : <FaMinus aria-label="Parțial" />;
 
+const standalone = [
+  {
+    icon: <FaCubes />,
+    title: "Funcționează singur",
+    text: "ERP-ul e un program de sine stătător: are bază de date, conturi și server proprii. Nu aveți nevoie de CRM-ul nostru ca să-l folosiți.",
+  },
+  {
+    icon: <FaLink />,
+    title: "Se conectează la ce aveți",
+    text: "Lucrează cu CRM-ul, site-ul sau magazinul online pe care le folosiți deja, prin API. Dacă un sistem se oprește, celălalt merge mai departe.",
+  },
+  {
+    icon: <FaPuzzlePiece />,
+    title: "Alegeți modulele",
+    text: "Începeți doar cu depozitul și stocurile, sau doar cu POS-ul pentru magazin — restul modulelor se adaugă când aveți nevoie.",
+  },
+  {
+    icon: <FaServer />,
+    title: "Datele rămân ale voastre",
+    text: "Rulează pe serverul companiei sau pe un server dedicat proiectului, cu backup și acces doar pentru conturile create de voi.",
+  },
+];
+
+const packages = [
+  {
+    name: "ERP Depozit",
+    who: "Pentru depozite și distribuție",
+    items: ["Catalog & coduri de bare", "Depozite multiple & transferuri", "Recepție, expediere, inventariere", "Scanner pe telefon", "Cost real FIFO"],
+    accent: "#3ee08f",
+  },
+  {
+    name: "ERP Retail",
+    who: "Pentru magazine fizice + online",
+    items: ["Tot din ERP Depozit", "POS pentru magazin", "Sincronizare cu site-ul", "Vânzări, livrări & retururi", "Rapoarte de marjă"],
+    accent: "#ffc21a",
+    featured: true,
+  },
+  {
+    name: "ERP + CRM",
+    who: "Pentru echipe de vânzări",
+    items: ["Tot din ERP Retail", "CRM la comandă", "Telefonie, Telegram, Meta", "Comenzi și statusuri sincronizate", "Analiză pe operatori"],
+    accent: "#c13cff",
+  },
+];
+
 const migration = [
   { n: "01", title: "Export din sistemul vechi", text: "Catalogul, prețurile, pozele și stocurile se exportă din 1C sau din sistemul existent." },
   { n: "02", title: "Import & verificare", text: "Datele se curăță și se importă în ERP; verificăm împreună că totul corespunde." },
@@ -184,7 +233,15 @@ const faq: FaqItem[] = [
   },
   {
     q: "Putem păstra datele din 1C?",
-    a: "Da. Catalogul, prețurile, codurile de bare și pozele se importă. La Gamma am migrat 407 produse și 319 poze din sistemul vechi, cu un script care poate fi rulat de mai multe ori fără dubluri.",
+    a: "Da. Catalogul, prețurile, codurile de bare și pozele se importă. La un proiect recent am migrat 407 produse și 319 poze din sistemul vechi, cu un script care poate fi rulat de mai multe ori fără dubluri.",
+  },
+  {
+    q: "Pot folosi ERP-ul fără CRM?",
+    a: "Da. ERP-ul e un soft separat, cu bază de date și conturi proprii. Îl puteți folosi singur, cu CRM-ul nostru sau conectat prin API la CRM-ul și site-ul pe care le aveți deja.",
+  },
+  {
+    q: "Trebuie să luăm toate modulele de la început?",
+    a: "Nu. Puteți porni doar cu depozitul și stocurile, sau doar cu POS-ul, și adăuga restul pe parcurs. Datele rămân aceleași, nu se pierde nimic la extindere.",
   },
   {
     q: "Se poate conecta casa de marcat fiscală?",
@@ -261,6 +318,50 @@ export default function ErpPage() {
         </ul>
       </section>
 
+      <section className="page-section" aria-labelledby="solo-title">
+        <h2 id="solo-title" className="section-title" data-reveal>
+          Un soft separat, nu un modul ascuns în alt program
+        </h2>
+        <p className="page-note" data-reveal>
+          ERP-ul se livrează ca produs de sine stătător: îl puteți folosi singur, alături de CRM-ul
+          nostru sau conectat la sistemele pe care le aveți deja.
+        </p>
+        <ul className="card-grid">
+          {standalone.map((a, i) => (
+            <li key={a.title} className="info-card erp-card" data-reveal style={{ "--d": `${i * 0.06}s` } as React.CSSProperties}>
+              <span className="info-card-icon" aria-hidden="true">
+                {a.icon}
+              </span>
+              <h3>{a.title}</h3>
+              <p>{a.text}</p>
+            </li>
+          ))}
+        </ul>
+        <ul className="erp-packages">
+          {packages.map((p, i) => (
+            <li
+              key={p.name}
+              className={`erp-package${p.featured ? " featured" : ""}`}
+              data-reveal
+              style={{ "--accent": p.accent, "--d": `${i * 0.08}s` } as React.CSSProperties}
+            >
+              <h3>{p.name}</h3>
+              <p className="erp-package-who">{p.who}</p>
+              <ul className="check-list">
+                {p.items.map((it) => (
+                  <li key={it}>
+                    <FaCheck aria-hidden="true" /> {it}
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ul>
+        <p className="page-note" data-reveal>
+          Pachetele sunt un punct de pornire — fiecare ERP se adaptează pe procesele companiei.
+        </p>
+      </section>
+
       <section className="page-section" aria-labelledby="ctrl-title">
         <h2 id="ctrl-title" className="section-title" data-reveal>
           Produsele se controlează dintr-un singur loc
@@ -331,17 +432,16 @@ export default function ErpPage() {
 
       <section className="page-section" aria-labelledby="case-title">
         <h2 id="case-title" className="section-title" data-reveal>
-          ERP realizat: Gamma
+          ERP realizat pentru un retailer
         </h2>
         <article className="crm-case erp-case" data-reveal style={{ "--accent": "#3ee08f" } as React.CSSProperties}>
           <div className="erp-case-head">
             <Image src="/projects/svr-erp.webp" alt="" width={72} height={72} className="crm-case-logo" />
-            <Image src="/projects/gamma.webp" alt="" width={72} height={72} className="crm-case-logo" />
           </div>
           <h3>ERP + CRM pentru un retailer cu magazin fizic, depozite și vânzări online</h3>
           <p>
             Un ERP construit de la zero, care a înlocuit vechiul sistem de stocuri al clientului. Rulează
-            separat de CRM și comunică cu el prin API: dacă unul se oprește, celălalt merge mai departe.
+            ca soft separat de CRM și comunică cu el prin API: dacă unul se oprește, celălalt merge mai departe.
           </p>
           <div className="erp-stats">
             <div>
@@ -375,9 +475,6 @@ export default function ErpPage() {
               <FaCheck aria-hidden="true" /> Statusurile comenzilor și notele șoferilor ajung automat în CRM
             </li>
           </ul>
-          <a href="https://www.gamma.md" target="_blank" rel="noopener noreferrer" className="project-visit">
-            gamma.md <FaArrowRight aria-hidden="true" />
-          </a>
         </article>
       </section>
 

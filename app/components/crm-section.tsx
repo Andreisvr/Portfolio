@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FaFileSignature, FaChartPie, FaUserShield, FaBell, FaArrowRight } from "react-icons/fa";
+import { FaFileSignature, FaHeadset, FaUserShield, FaBell, FaArrowRight } from "react-icons/fa";
 import { homeIntegrations } from "../data/integrations";
 import ContactCta from "./contact-cta";
 
@@ -8,23 +8,23 @@ import ContactCta from "./contact-cta";
 const features = [
   { icon: <FaBell />, title: "Remindere & sarcini", text: "Nimic nu se pierde: apeluri ratate, livrări întârziate, clienți de recontactat." },
   { icon: <FaFileSignature />, title: "Documente automate", text: "Contracte și acte DOCX / PDF generate din datele lead-ului." },
-  { icon: <FaChartPie />, title: "Analiză pe operatori", text: "Conversii, cec mediu, top produse și locații, pe orice perioadă." },
+  { icon: <FaHeadset />, title: "Telefonie & operatori", text: "Convorbiri înregistrate, timp în apel, refuzuri, conversie — controlul complet al operatorilor." },
   { icon: <FaUserShield />, title: "Roluri & securitate", text: "Acces pe roluri, sesiuni securizate, jurnal de acțiuni, date pe serverul tău." },
 ];
 
 const cases = [
   {
-    logo: "/projects/promcrm.webp",
-    title: "PromCRM — PromAuto",
-    text: "A înlocuit complet amoCRM: vânzări + gestiunea stocului auto, leaduri din site și Meta distribuite automat, telefonie Orange, notificări Telegram, acte generate automat.",
-    chips: ["Meta", "Telegram", "Orange PBX", "Acte PDF"],
+    logo: "/projects/svr-crm.webp",
+    title: "CRM pentru o echipă de vânzări",
+    text: "A înlocuit complet un CRM cu abonament: vânzări + gestiunea stocului, leaduri din site și Meta distribuite automat, telefonie PBX, notificări Telegram, acte generate automat.",
+    chips: ["Meta", "Telegram", "Telefonie PBX", "Acte PDF"],
     accent: "#8bd317",
   },
   {
     logo: "/projects/svr-erp.webp",
-    title: "CRM + ERP — Gamma",
-    text: "CRM construit de la zero + ERP separat pentru depozit, legate prin API: telefonie Moldcell, SMS, leaduri din landinguri, TikTok și magazin online, verificare automată a livrărilor EVS.",
-    chips: ["Moldcell PBX", "SMS", "EVS", "ERP"],
+    title: "CRM + ERP pentru retail",
+    text: "CRM construit de la zero + ERP separat pentru depozit, legate prin API: telefonie PBX, SMS, leaduri din landinguri, rețele sociale și magazin online, verificare automată a livrărilor la curier.",
+    chips: ["Telefonie PBX", "SMS", "Curierat", "ERP"],
     accent: "#2f8bff",
   },
 ];
