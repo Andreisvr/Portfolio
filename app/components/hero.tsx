@@ -14,6 +14,7 @@ import {
 import ProjectsTimeline from "./timeline";
 import CrmSection from "./crm-section";
 import ErpTeaser from "./erp-teaser";
+import AdsTeaser from "./ads-teaser";
 import HowWeWork from "./how-we-work";
 import VideoBackground from "./video-background";
 import { CONTACT } from "../lib/site";
@@ -65,7 +66,9 @@ export default function Hero() {
             </li>
             <li className="service-item">
               <FaChartLine aria-hidden="true" />
-              <span>SEO & promovare pe Google și Meta</span>
+              <Link href="/targeting" className="service-item-link">
+                Targeting Meta, Google & YouTube + SEO
+              </Link>
             </li>
           </ul>
         </section>
@@ -100,6 +103,8 @@ export default function Hero() {
         <CrmSection />
 
         <ErpTeaser />
+
+        <AdsTeaser />
 
         <HowWeWork />
       </div>

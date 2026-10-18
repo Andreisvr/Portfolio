@@ -1392,6 +1392,7 @@ html.js [data-reveal].is-in {
 
 .page {
   position: relative;
+  isolation: isolate; /* fundalul fix (z-index -1) stă deasupra fundalului negru al body */
   min-height: 100vh;
   width: 90%;
   max-width: 1200px;
@@ -1400,16 +1401,143 @@ html.js [data-reveal].is-in {
 }
 
 .page-backdrop {
+  --pb1: #ff9f1a;
+  --pb2: #c13cff;
+  --pb3: #2f8bff;
+  --pb4: #3ee08f;
   position: fixed;
   inset: 0;
   z-index: -1;
   overflow: hidden;
-  background: radial-gradient(ellipse at top, #12121c 0%, #000 70%);
+  background:
+    radial-gradient(120% 80% at 50% -10%, color-mix(in srgb, var(--pb3) 22%, #07070c) 0%, #050508 55%, #000 100%);
 }
 
-.page-backdrop .crm-blob {
-  z-index: 0;
-  opacity: 0.32;
+.pb-crm { --pb1: #ff9f1a; --pb2: #c13cff; --pb3: #5b3cff; --pb4: #ff5e8a; }
+.pb-erp { --pb1: #3ee08f; --pb2: #14b8a6; --pb3: #0e7490; --pb4: #a3e635; }
+.pb-ads { --pb1: #4285f4; --pb2: #ff3d57; --pb3: #1e3a8a; --pb4: #fbbc04; }
+.pb-int { --pb1: #22d3ee; --pb2: #2f8bff; --pb3: #1e3a8a; --pb4: #a78bfa; }
+.pb-how { --pb1: #ffd24d; --pb2: #ff7a00; --pb3: #6d28d9; --pb4: #2f8bff; }
+.pb-nf  { --pb1: #c13cff; --pb2: #ff7a00; --pb3: #312e81; --pb4: #2f8bff; }
+
+/* aurora: con de culoare care se rotește foarte lent, decupat în elipsă */
+.pb-aurora {
+  position: absolute;
+  left: 50%;
+  top: -35vmax;
+  width: 140vmax;
+  height: 140vmax;
+  margin-left: -70vmax;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    color-mix(in srgb, var(--pb1) 30%, transparent) 60deg,
+    transparent 120deg,
+    color-mix(in srgb, var(--pb2) 26%, transparent) 200deg,
+    transparent 260deg,
+    color-mix(in srgb, var(--pb4) 22%, transparent) 320deg,
+    transparent 360deg
+  );
+  -webkit-mask-image: radial-gradient(closest-side, transparent 0%, #000 35%, transparent 72%);
+  mask-image: radial-gradient(closest-side, transparent 0%, #000 35%, transparent 72%);
+  opacity: 0.55;
+  animation: pbSpin 70s linear infinite;
+}
+
+@keyframes pbSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* sfere de „materie lichidă” — gradient radial moale, fără blur */
+.pb-orb {
+  position: absolute;
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  opacity: 0.5;
+  will-change: transform;
+}
+
+.pb-orb-1 {
+  width: 60vmax; height: 60vmax; left: -18vmax; top: 8vh;
+  background: radial-gradient(circle at 40% 40%, color-mix(in srgb, var(--pb1) 55%, transparent) 0%, transparent 62%);
+  animation: pbFloat1 26s ease-in-out infinite alternate;
+}
+
+.pb-orb-2 {
+  width: 55vmax; height: 55vmax; right: -20vmax; top: 30vh;
+  background: radial-gradient(circle at 60% 40%, color-mix(in srgb, var(--pb2) 50%, transparent) 0%, transparent 62%);
+  animation: pbFloat2 32s ease-in-out infinite alternate;
+}
+
+.pb-orb-3 {
+  width: 70vmax; height: 70vmax; left: 15vw; bottom: -45vmax;
+  background: radial-gradient(circle, color-mix(in srgb, var(--pb3) 60%, transparent) 0%, transparent 60%);
+  animation: pbFloat3 38s ease-in-out infinite alternate;
+}
+
+.pb-orb-4 {
+  width: 32vmax; height: 32vmax; left: 45vw; top: -8vmax;
+  background: radial-gradient(circle, color-mix(in srgb, var(--pb4) 45%, transparent) 0%, transparent 65%);
+  opacity: 0.4;
+  animation: pbFloat4 22s ease-in-out infinite alternate;
+}
+
+@keyframes pbFloat1 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(12vw, 10vh) scale(1.15); }
+  100% { transform: translate(4vw, 26vh) scale(0.95); }
+}
+
+@keyframes pbFloat2 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-14vw, -12vh) scale(1.1); }
+  100% { transform: translate(-6vw, 14vh) scale(1.2); }
+}
+
+@keyframes pbFloat3 {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-16vw, -10vh) scale(1.12); }
+}
+
+@keyframes pbFloat4 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-18vw, 16vh) scale(1.3); }
+  100% { transform: translate(10vw, 8vh) scale(0.9); }
+}
+
+/* grilă fină de puncte, vizibilă doar în centru */
+.pb-grid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.09) 1px, transparent 1.4px);
+  background-size: 28px 28px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 35%, #000 0%, transparent 75%);
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 35%, #000 0%, transparent 75%);
+}
+
+/* granulație — textura „de materie” */
+.pb-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.12;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.pb-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 45%, rgba(0, 0, 0, 0.65) 100%);
+}
+
+@media (max-width: 768px) {
+  .pb-aurora { opacity: 0.45; animation-duration: 90s; }
+  .pb-orb { opacity: 0.42; }
+  .pb-grid { background-size: 22px 22px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pb-aurora, .pb-orb { animation: none; }
 }
 
 .page-hero {
@@ -2325,4 +2453,65 @@ html.js [data-reveal].is-in {
 @media (max-width: 768px) {
   .tel-metrics { grid-template-columns: 1fr; }
   .tel-metric { padding: 18px; }
+}
+
+
+/* ================= TARGETING ================= */
+
+.ads-card .info-card-icon {
+  background: linear-gradient(135deg, #4285f4, #ff3d57);
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(66, 133, 244, 0.35);
+}
+
+.ads-blob { background: #4285f4; }
+
+.ads-chips {
+  justify-content: center;
+  margin-top: 36px;
+}
+
+.inline-icon {
+  color: var(--gold);
+  margin-right: 6px;
+  vertical-align: -2px;
+}
+
+.ads-proof {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 60px;
+}
+
+.ads-proof div {
+  padding: 26px 22px;
+  text-align: center;
+  border-radius: 22px;
+  background: linear-gradient(160deg, rgba(66, 133, 244, 0.14), rgba(255, 61, 87, 0.06));
+  border: 1px solid rgba(120, 160, 255, 0.3);
+  backdrop-filter: blur(8px);
+}
+
+.ads-proof strong {
+  display: block;
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  font-weight: 800;
+  line-height: 1.15;
+  background: linear-gradient(90deg, #ffd24d, #ff7a00);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.ads-proof span {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+@media (max-width: 768px) {
+  .ads-proof { grid-template-columns: 1fr; gap: 10px; margin-top: 40px; }
+  .ads-proof div { padding: 18px; backdrop-filter: none; }
 }

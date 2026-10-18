@@ -7,7 +7,7 @@ export const dynamic = "force-static";
 export function GET() {
   const body = `# SVR Dev
 
-> Studio de dezvoltare software din Chișinău, Moldova: website-uri și magazine online, CRM la comandă, ERP pentru retail (alternativă la 1C), integrări între sisteme (Telegram, Meta, telefonie, curierat, ERP), automatizări business, boți Telegram și SEO. Contact principal: Telegram ${CONTACT.telegram}.
+> Studio de dezvoltare software din Chișinău, Moldova: website-uri și magazine online, CRM la comandă, ERP pentru retail (alternativă la 1C), targeting Meta/Google/YouTube, integrări între sisteme (Telegram, Meta, telefonie, curierat, ERP), automatizări business, boți Telegram și SEO. Contact principal: Telegram ${CONTACT.telegram}.
 
 ## Pagini
 

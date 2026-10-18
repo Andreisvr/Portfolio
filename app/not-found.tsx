@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function NotFound() {
   return (
     <div className="page not-found">
-      <PageBackdrop />
+      <PageBackdrop variant="nf" />
       <p className="nf-code" aria-hidden="true">
         404
       </p>

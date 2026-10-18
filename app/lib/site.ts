@@ -13,6 +13,7 @@ export const NAV = [
   { href: "/#proiecte", label: "Proiecte" },
   { href: "/crm-la-comanda", label: "CRM la comandă" },
   { href: "/erp-retail", label: "ERP retail" },
+  { href: "/targeting", label: "Targeting" },
   { href: "/integrari", label: "Integrări" },
   { href: "/cum-lucram", label: "Cum lucrăm" },
 ];
@@ -36,6 +37,12 @@ export const PAGES = [
     title: "ERP pentru retail — alternativă la 1C",
     summary:
       "ERP pentru magazine: depozite multiple, stocuri în timp real, documente de stoc, cost real FIFO și marjă, POS, scanner pe telefon, livrări, sincronizare automată cu site-ul, CRM-ul și curierii.",
+  },
+  {
+    path: "/targeting",
+    title: "Targeting Meta, Google Ads și YouTube",
+    summary:
+      "Targeting complet pe Meta (Facebook, Instagram), Google Ads (Search, Performance Max, Display), YouTube; GA4, Tag Manager, Pixel și Conversions API; reclame conectate la CRM, ERP sau site-ul existent.",
   },
   {
     path: "/integrari",

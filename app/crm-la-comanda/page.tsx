@@ -152,7 +152,7 @@ export default function CrmPage() {
   const done = integrations.filter((i) => i.status === "done");
   return (
     <div className="page">
-      <PageBackdrop />
+      <PageBackdrop variant="crm" />
       <JsonLd
         data={{
           "@context": "https://schema.org",

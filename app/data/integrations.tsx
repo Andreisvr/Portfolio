@@ -16,7 +16,7 @@ import {
   FaCashRegister,
   FaCalculator,
 } from "react-icons/fa";
-import { SiGmail, SiGooglesheets } from "react-icons/si";
+import { SiGmail, SiGooglesheets, SiGoogleads } from "react-icons/si";
 
 export type Integration = {
   slug: string;
@@ -62,6 +62,17 @@ export const integrations: Integration[] = [
     status: "done",
     icon: <FaFacebookF />,
     color: "#1877f2",
+  },
+  {
+    slug: "google-ads",
+    name: "Google Ads & Analytics",
+    hint: "GA4, Tag Manager, conversii pentru reclame",
+    details:
+      "Google Analytics 4 și Tag Manager configurate pe site, cu conversiile importante trimise în Google Ads, ca reclamele să fie optimizate pe cereri și vânzări reale.",
+    examples: ["GA4 + Google Tag Manager", "Conversii din site trimise în Google Ads", "Rapoarte în Looker Studio"],
+    status: "done",
+    icon: <SiGoogleads />,
+    color: "#4285f4",
   },
   {
     slug: "instagram",

@@ -63,7 +63,7 @@ export default function IntegrationsPage() {
 
   return (
     <div className="page">
-      <PageBackdrop />
+      <PageBackdrop variant="int" />
       <JsonLd
         data={{
           "@context": "https://schema.org",

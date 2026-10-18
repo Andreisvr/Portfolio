@@ -102,7 +102,7 @@ const faq: FaqItem[] = [
 export default function HowPage() {
   return (
     <div className="page">
-      <PageBackdrop />
+      <PageBackdrop variant="how" />
       <JsonLd
         data={{
           "@context": "https://schema.org",

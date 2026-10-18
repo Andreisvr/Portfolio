@@ -14,7 +14,7 @@ const geistSans = Geist({
 });
 
 const description =
-  "SVR Dev — dezvoltare website-uri și magazine online, CRM la comandă, ERP pentru retail (alternativă la 1C), integrări Telegram, Meta, telefonie și curierat, automatizări business și soft la cerere pentru companii din Moldova.";
+  "SVR Dev — dezvoltare website-uri și magazine online, CRM la comandă, ERP pentru retail (alternativă la 1C), targeting Meta, Google și YouTube, integrări Telegram, Meta, telefonie și curierat, automatizări business și soft la cerere pentru companii din Moldova.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -40,6 +40,9 @@ export const metadata: Metadata = {
     "soft la comandă",
     "integrare Meta Lead Ads",
     "telefonie CRM",
+    "targeting Meta",
+    "Google Ads Moldova",
+    "reclamă YouTube",
   ],
   alternates: { canonical: "/" },
   openGraph: {
@@ -112,6 +115,7 @@ const organization = {
     "System Integration",
     "Telegram Bots",
     "SEO",
+    "Online Advertising",
   ],
 };
 

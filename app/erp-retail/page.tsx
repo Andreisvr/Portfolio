@@ -252,7 +252,7 @@ const faq: FaqItem[] = [
 export default function ErpPage() {
   return (
     <div className="page">
-      <PageBackdrop />
+      <PageBackdrop variant="erp" />
       <JsonLd
         data={{
           "@context": "https://schema.org",

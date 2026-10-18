@@ -23,6 +23,7 @@ const services = {
     "Dezvoltare website-uri și magazine online",
     "Automatizări procese business și soft la cerere",
     "Boți Telegram și sisteme interne pentru personal",
+    "Targeting Meta, Google Ads și YouTube, tracking GA4 și Conversions API",
     "SEO și promovare pe Google și Meta",
   ].map((name) => ({
     "@type": "Offer",
